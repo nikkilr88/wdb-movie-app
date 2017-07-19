@@ -2,6 +2,8 @@ var express = require("express");
 var request = require("request");
 var app = express();
 
+var port = process.env.PORT || 8080;
+
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
@@ -21,6 +23,6 @@ app.get("/results", function(req, res){
     });
 });
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(port, function(){
     console.log("Server Started!");
 });
