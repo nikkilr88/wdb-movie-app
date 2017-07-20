@@ -53,9 +53,8 @@ ul {
 }
 
 li {
-    float: left;
-    width: 15%;
-    margin: 2.5%;
+    width: 70%;
+    margin: 5px auto;
     padding: 10px;
     background: #2b2b2b;
     height: auto;
@@ -69,16 +68,6 @@ img {
     margin: 10px 0;
 }
 
-@media only screen and (max-width: 690px){
-    li {
-        width: 45%;
-        margin: 2.5%;
-        height: auto;
-    }
-    input[type="text"] {
-      width: 75%;
-    }
-}
 
 @media only screen and (max-width: 490px){
     li {
@@ -86,6 +75,9 @@ img {
         right: 0;
         left: 0;
         height: auto;
+    }
+    input[type="text"] {
+        width: 70%;
     }
    
 }
