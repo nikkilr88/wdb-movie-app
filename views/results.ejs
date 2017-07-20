@@ -1,18 +1,21 @@
 <% include partials/header %>
 
 <h1>Search Results</h1>
-
-<ul>
-    <% data.Search.forEach(function(movie){ %>
-
-        <li>
-            <img src="<%= movie.Poster %>" /> 
-            <br /> <%= movie.Title %> (<%= movie.Year %>)
-        </li>
-
-    <% }); %>
-</ul>
-
+<div class="container">
+    <div class="row">
+        
+            <% data.Search.forEach(function(movie){ %>
+                <div id="movies" class="col-md-3">
+                    <div class="well text-container">
+                        <img src="<%= movie.Poster %>" /> 
+                        <h5><%= movie.Title %> (<%= movie.Year %>)</h5>
+                        <button class="btn btn-primary">Learn More</button>
+                    </div>
+                </div>
+            <% }); %>
+        
+    </div>
+</div>
 <a href="/">Search Again</a>
 
 <% include partials/footer %>
