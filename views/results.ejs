@@ -9,7 +9,7 @@
                     <div class="well text-container">
                         <img src="<%= movie.Poster %>" /> 
                         <h5><%= movie.Title %> (<%= movie.Year %>)</h5>
-                        <button class="btn btn-primary">Learn More</button>
+                        <button class="btn btn-primary"><a href="/movies/<%= movie.imdbID %>">More Info</a></button>
                     </div>
                 </div>
             <% }); %>
