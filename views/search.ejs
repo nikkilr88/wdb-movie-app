@@ -1,10 +1,18 @@
-<% include partials/header %>
-
-<h1>Search Movie Title</h1>
-
-<form action="/movies" method="GET">
-    <input type="text" placeholder="Movie Title" name="search" />
-    <input type="submit" value="Go!" />
-</form>
-
-<% include partials/footer %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>WDB: Movie App</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css" />
+        <link rel="stylesheet" href="/stylesheets/search.css"></link>
+    </head>
+    <body>
+        <h1><i class="fa fa-film"></i> Movie Search</h1>
+        
+        <form action="/movies" method="GET">
+            <input type="text" placeholder="Movie Title" name="search" />
+            <input type="submit" value="&#xf002" />
+        </form>
+    </body>
+</html>
