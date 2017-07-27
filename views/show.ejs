@@ -1,1 +1,34 @@
-<h1><%= data.Title %></h1>
+<% include ./partials/header %>
+
+<div id="movie" class="container well">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="<%= data.Poster %>" class="thumbnail" />
+        </div>
+        <div class="col-md-8">
+            <h2><%= data.Title %></h2>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Year:</strong> <%= data.Year %></li>
+                <li class="list-group-item"><strong>Rated:</strong> <%= data.Rated %></li>
+                <li class="list-group-item"><strong>Genre:</strong> <%= data.Genre %></li>
+                <li class="list-group-item"><strong>Genre:</strong> <%= data.Language %></li>
+                <li class="list-group-item"><strong>Country:</strong> <%= data.Country %></li>
+                <li class="list-group-item"><strong>Actors:</strong> <%= data.Actors %></li>
+            </ul>
+            <div class="well">
+                <h4>Plot</h4>
+                <p><%= data.Plot %></p>
+            </div>
+            <a href="http://imdb.com/title/<%= data.imdbID %>" target="_blank" class="btn btn-primary">View On IMDB</a>
+            <a class="btn btn-default" onClick="goBack()">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<% include ./partials/footer %>
