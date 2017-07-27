@@ -2,6 +2,7 @@ var express = require("express");
 var request = require("request");
 var app = express();
 
+//App Config
 var port = process.env.PORT || 8080;
 
 app.use(express.static("public"));
@@ -11,6 +12,7 @@ app.get("/", function(req, res){
     res.render("search");
 });
 
+//Results Page
 app.get("/movies", function(req, res){
     var query = req.query.search;
     var url = "http://www.omdbapi.com/?s="+query+"&apikey=thewdb"
@@ -23,6 +25,7 @@ app.get("/movies", function(req, res){
     });
 });
 
+//Show Route
 app.get("/movies/:id", function(req, res){
     var id = req.params.id;
     var url = "http://www.omdbapi.com/?i=" + id + "&apikey=thewdb";
@@ -35,6 +38,7 @@ app.get("/movies/:id", function(req, res){
     });
 });
 
+//Start Server
 app.listen(port, function(){
     console.log("Server Started!");
 });
