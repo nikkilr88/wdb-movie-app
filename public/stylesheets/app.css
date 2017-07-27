@@ -1,0 +1,37 @@
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.btn a:hover, .btn-primary a:hover{
+    color:whitesmoke;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+}
+h5 {
+    font-size: 14px;
+}
+
+.text-container {
+    text-align: center;
+}
+
+#movies img, #movie img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+@media(min-width:960px) {
+   #movies .col-md-3 .well {
+        height: 390px;
+    }
+
+    #movies .col-md-3 img {
+        height: 240px;
+    } 
+}
