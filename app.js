@@ -15,9 +15,19 @@ app.get("/", function(req, res){
 //Results Page
 app.get("/movies", function(req, res){
     var query = req.query.search;
+    //Remove extra spaces
+    for(var i = query.length-1; i > 0; i--){
+        if(query[i] === " " && query[i+1] === undefined){
+            query = query.substring(0, query.length-1);
+        }
+    }
+    
     var url = "http://www.omdbapi.com/?s="+query+"&apikey=thewdb"
     
     request(url, function(error, response, body){
+        if(error){
+            console.log(error);
+        }
         if(!error && response.statusCode === 200){
             var data = JSON.parse(body);
             res.render("results", {data: data});
@@ -34,6 +44,8 @@ app.get("/movies/:id", function(req, res){
         if(!error && response.statusCode === 200){
             var data = JSON.parse(body);
             res.render("show", {data: data});
+        } else {
+            console.log(response.statusCode);
         }
     });
 });
