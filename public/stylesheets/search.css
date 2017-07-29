@@ -6,15 +6,19 @@ body {
 
 h1 {
     text-align: center;
+    margin: 175px auto 0 auto;
 }
 
 form {
-    margin: 175px 0;
+    margin: 75px auto 0 auto;
     text-align: center;
+    box-sizing: border-box;
+    max-width: 600px;
+    width: 90%;
 }
 
 input[type="text"] {
-    width: 60%;
+    width: 80%;
     background: none;
     border: none;
     border-bottom: 1px solid #fff;
@@ -25,10 +29,17 @@ input[type="text"] {
 
 input[type="submit"] {
     border: none;
-    height: 45px;
-    width: 45px;
     border-radius: 50%;
     background: none;
     font-family: "FontAwesome";
     outline: none;
+}
+
+@media(max-width: 640px){
+    h1 {
+        font-size: 34px;
+    }
+    input[type="text"] {
+        font-size: 24px;
+    }
 }
