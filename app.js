@@ -1,11 +1,26 @@
-var express = require("express");
-var request = require("request");
-var app = express();
+var express  = require("express"),
+    app      = express(),
+    bodyParser = require("body-parser"),
+    request  = require("request"),
+    mongoose = require("mongoose");
 
 //App Config
 var port = process.env.PORT || 8080;
 
+mongoose.connect("mongodb://localhost/movie-app", {useMongoClient: true});
+
+var commentSchema = new mongoose.Schema({
+    imdb: String,
+    name: String,
+    text: String
+});
+
+var Comment = mongoose.model("Comment", commentSchema);
+
+
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended: true})); 
+
 app.set("view engine", "ejs");
 
 app.get("/", function(req, res){
@@ -43,13 +58,34 @@ app.get("/movies/:id", function(req, res){
     request(url, function(error, response, body){
         if(!error && response.statusCode === 200){
             var data = JSON.parse(body);
-            res.render("show", {data: data});
+            Comment.find({imdb: req.params.id}, function(err, comments){
+                if(err){
+                    console.log(err);
+                } else {
+                     res.render("show", {data: data, comments: comments});
+                }
+            });
         } else {
             console.log(response.statusCode);
         }
     });
 });
 
+app.get("/movies/:id/comments/new", function(req, res){
+    console.log(req.params.id);
+    res.render("newComment", {id: req.params.id});
+});
+
+app.post("/movies/:id/comments", function(req, res){
+    Comment.create(req.body.comment, function(err, comment){
+        if(err){
+            console.log(err);
+        } else {
+            console.log(comment);
+            res.redirect("/movies/"+req.params.id);
+        }
+    });
+});
 //Start Server
 app.listen(port, function(){
     console.log("Server Started!");
