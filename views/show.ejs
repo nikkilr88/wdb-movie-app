@@ -25,6 +25,14 @@
     </div>
 </div>
 
+<div class="container well">
+    <% comments.forEach(function(comment){ %>
+        <div class="well">
+            <%= comment.text %>
+        </div>
+    <% }); %>
+</div>
+
 <script>
     function goBack() {
         window.history.back();
